@@ -7,3 +7,35 @@ disable_error_code = ["union-attr", "annotation-unchecked", "import-untyped"]
 explicit_package_bases = true
 warn_unused_ignores = true
 exclude = ['tests']
+
+[tool.poetry]
+name = "tagstudio"
+version = "0.1.0"
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "~3.12"
+humanfriendly = "10.0"
+opencv-python = ">=4.8.0.74,<=4.9.0.80"
+pillow = "10.3.0"
+typing-extensions = ">=3.10.0.0,<=4.11.0"
+ujson = ">=5.8.0,<=5.9.0"
+numpy = "1.26.4"
+rawpy = "0.21.0"
+pillow-heif = "0.16.0"
+chardet = "5.2.0"
+pyside6 = "6.7.1"
+pyside6-addons = "6.7.1"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "0.4.2"
+pre-commit = "3.7.0"
+pytest = "8.2.0"
+pyinstaller = "6.6.0"
+mypy = "1.10.0"
+syrupy = "4.6.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

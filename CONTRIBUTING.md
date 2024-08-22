@@ -25,34 +25,21 @@ Thank you so much for showing interest in contributing to TagStudio! Here are a 
 ### Prerequisites
 
 - [Python](https://www.python.org/downloads/) 3.12
-- [Ruff](https://github.com/astral-sh/ruff) (Included in `requirements-dev.txt`)
-- [Mypy](https://github.com/python/mypy) (Included in `requirements-dev.txt`)
-- [PyTest](https://docs.pytest.org) (Included in `requirements-dev.txt`)
+- [Poetry](https://python-poetry.org/docs/)
 
-### Creating a Python Virtual Environment
+### Installing Dependencies
 
-If you wish to launch the source version of TagStudio outside of your IDE:
+To install the necessary dependencies using Poetry, follow these steps:
 
-> [!IMPORTANT]
-> Depending on your system, Python may be called `python`, `py`, `python3`, or `py3`. These instructions use the alias `python3` for consistency. You can check to see which alias your system uses and if it's for the correct Python version by typing `python3 --version` (or whichever alias) into your terminal.
+1. Ensure you have Python installed. Depending on your system, Python may be called `python`, `py`, `python3`, or `py3`. You can check your Python version with `python3 --version` (or your system's alias).
 
-> [!TIP]
-> On Linux and macOS, you can launch the `tagstudio.sh` script to skip the following process, minus the `requirements-dev.txt` installation step. _Using the script is fine if you just want to launch the program from source._
+2. In the root directory of the repository, simply run the following command:
 
-1. In the root repository directory, create a python virtual environment:  
-   `python3 -m venv .venv`
-2. Activate your environment:
+   ```bash
+   poetry install
+   ```
 
-- Windows w/Powershell: `.venv\Scripts\Activate.ps1`
-- Windows w/Command Prompt: `.venv\Scripts\activate.bat`
-- Linux/macOS: `source .venv/bin/activate`
-
-3. Install the required packages:
-
-- `pip install -r requirements.txt`
-- If developing (includes Ruff and Mypy): `pip install -r requirements-dev.txt`
-
-_Learn more about setting up a virtual environment [here](https://docs.python.org/3/tutorial/venv.html)._
+This will automatically create a virtual environment and install all required dependencies, including those for development.
 
 ### Manually Launching (Outside of an IDE)
 
@@ -71,14 +58,14 @@ _Learn more about setting up a virtual environment [here](https://docs.python.or
 
 - **Any** (No Scripts)
 
-  - Alternatively, with the virtual environment loaded, run the python file at `tagstudio\tag_studio.py` from your terminal. If you're in the project's root directory, simply run `python3 tagstudio/tag_studio.py`.
+  - You can run the Python file directly using Poetry, which will manage the virtual environment for you. From the project’s root directory, execute the following command: `poetry run python tagstudio/tag_studio.py`.
 
 ## Workflow Checks
 
 When pushing your code, several automated workflows will check it against predefined tests and style checks. It's _highly recommended_ that you run these checks locally beforehand to avoid having to fight back-and-forth with the workflow checks inside your pull requests.
 
 > [!TIP]
-> To format the code automatically before each commit, there's a configured action available for the `pre-commit` hook. Install it by running `pre-commit install`. The hook will be executed each time on running `git commit`.
+> To format the code automatically before each commit, there's a configured action available for the `pre-commit` hook. Install it by running `poetry run pre-commit install`. The hook will be executed each time on running `git commit`.
 
 ### [Ruff](https://github.com/astral-sh/ruff)
 
@@ -87,7 +74,7 @@ A Python linter and code formatter. Ruff uses the `pyproject.toml` as its config
 #### Running Locally
 
 - Lint code with by moving into the `/tagstudio` directory with `cd tagstudio` and running `ruff --config ../pyproject.toml`.
-- Format code with `ruff format` inside the repository directory
+- Format code with `poetry run ruff format` inside the repository directory
 
 Ruff is also available as a VS Code [extension](https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff), PyCharm [plugin](https://plugins.jetbrains.com/plugin/20574-ruff), and [more](https://docs.astral.sh/ruff/integrations/).
 
@@ -99,7 +86,7 @@ Mypy is a static type checker for Python. It sure has a lot to say sometimes, bu
 
 - **First time only:** Move into the `/tagstudio` directory with `cd tagstudio` and run the following:
   - `mkdir -p .mypy_cache`
-  - `mypy --install-types --non-interactive`
+  - `poetry run mypy --install-types --non-interactive`
 - Check code by moving into the `/tagstudio` directory with `cd tagstudio` _(if you aren't already inside)_ and running `mypy --config-file ../pyproject.toml .`. _(Don't forget the `.` at the end!)_
 
 > [!CAUTION]
@@ -109,7 +96,7 @@ Mypy is also available as a VS Code [extension](https://marketplace.visualstudio
 
 ### PyTest
 
-- Run all tests by moving into the `/tagstudio` directory with `cd tagstudio` and running `pytest tests/`.
+- Run all tests by moving into the `/tagstudio` directory with `cd tagstudio` and running `poetry run pytest tests/`.
 
 ## Code Guidelines
 

@@ -1,2 +1,3 @@
 @echo off
-.venv\Scripts\python.exe .\TagStudio\tag_studio.py --ui qt %*
+poetry install
+poetry run python .\TagStudio\tag_studio.py --ui qt %*
